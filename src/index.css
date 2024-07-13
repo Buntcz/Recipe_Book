@@ -20,15 +20,17 @@ body {
 }
 
 .visible {
-    display: none;
+    display: flex;
+    transform: scale(0%);
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border: 3px solid black;
     border-radius: 25px;
     gap: 1rem;
+    transition: transform 500ms ease-in-out;
 }
 
 .visible.active {
-    display: flex;
+    transform: scale(100%);
 }
