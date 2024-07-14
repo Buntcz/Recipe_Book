@@ -1,21 +1,25 @@
 import { useState } from "react"
 
-function Form({cl,condition}) {
+function Form({cl,condition,setCondition}) {
    const[title,setTitle] =  useState("")
    const[ingredients,setIngredients] = useState("")
    const[wayToMake,setWayToMake] = useState("")
 
    function handleSubmit(event) {
-     event.prevent.default()
+     event.preventDefault()
      console.log({
         'title': title,
         'ingredients': ingredients,
         'Way to make': wayToMake
      })
+     setCondition(false)
+     setTitle("")
+     setIngredients("")
+     setWayToMake("")
    }
 
     return (
-        <form className={condition ? cl + " active": cl} onSubmit={() => handleSubmit()}>
+        <form className={condition ? cl + " active": cl} onSubmit={handleSubmit}>
             <h1>Add Recipe</h1>
             <p>please fill up the fields under with the appropriate information.</p>
             <label className="title">

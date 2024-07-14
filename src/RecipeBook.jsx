@@ -3,11 +3,11 @@ import { Form } from "./Form"
 
 function RecipeBook() {
     const [formVisible, setFormVisible] = useState(false)
-    const[recipe, setRecipe] = useState([{
+    const[recipes, setRecipes] = useState([{
         title: '',
         ingredients: '',
         wayToMake: ''
-    }])
+    }]);
 
     function changeVisible() {
         if(formVisible === false) {
@@ -24,6 +24,7 @@ function RecipeBook() {
                 <Form 
                 cl={"visible"}
                 condition={formVisible}
+                setCondition={setFormVisible}
                 />
             </div>
         </div>
