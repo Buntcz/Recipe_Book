@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { Recipe } from "./Recipe";
 
  const recipeList = [
     {
@@ -28,10 +27,9 @@ function RecipeBook() {
         }
     }
 
-    function handleDelete(itemToDelete) {
-        setRecipes((existingRecipes) => {
-            existingRecipes.filter((_,index) =>  index !== itemToDelete)
-        })
+    function handleDelete(index) {
+       const filtered = recipes.filter((_,i) => i !== index)
+       setRecipes(filtered);
     }
 
     function handleSubmit(event) {
@@ -69,14 +67,13 @@ function RecipeBook() {
         </form>
             </div>
             <div className="recipesContainer">
-                {recipes.map((value) => {
-                    return <Recipe 
-                    key={value.id}
-                    title={value.title}
-                    ingredients={value.ingredients}
-                    wayToMake={value.wayToMake}
-                    deleteFunc={handleDelete}
-                    />
+                {recipes.map((value,index) => {
+                    return  <div key={value.id} className="recipeContainer">
+                    <h1>{value.title}</h1>
+                    <p>{value.ingredients}</p>
+                    <p>{value.wayToMake}</p>
+                    <button className="deleteButton" onClick={() => handleDelete(index)}>delete</button>
+                </div>
                 })}
             </div>
         </div>
